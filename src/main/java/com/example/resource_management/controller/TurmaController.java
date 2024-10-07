@@ -11,7 +11,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/class")
 public class TurmaController {
-
     @Autowired
     private TurmaService turmaService;
 
@@ -39,5 +38,4 @@ public class TurmaController {
     public ResponseEntity<Void> deleteTurma(@PathVariable Long id) {
         return turmaService.deleteTurma(id);
     }
-
 }

@@ -1,6 +1,7 @@
 package com.example.resource_management.service;
 
 import com.example.resource_management.domain.Turma;
+import com.example.resource_management.repository.ProfessorRepository;
 import com.example.resource_management.repository.TurmaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,9 +13,11 @@ import java.util.Optional;
 
 @Service
 public class TurmaService {
-
     @Autowired
     private TurmaRepository turmaRepository;
+
+    @Autowired
+    private ProfessorRepository professorRepository;
 
     public List<Turma> getAllTurmas() {
         return turmaRepository.findAll();
@@ -26,7 +29,6 @@ public class TurmaService {
                     .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    
     public Turma createTurma(Turma turma) {
         return turmaRepository.save(turma);
     }
@@ -46,5 +48,4 @@ public class TurmaService {
         turmaRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
-
 }

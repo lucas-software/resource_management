@@ -13,9 +13,12 @@ public class Turma {
     private Long id;
 
     private int codigo;
+    private int[] dias;
     private String[] horario;
-    
-    private String professor;
+
+    @ManyToOne
+    @JoinColumn(name = "professor_id", nullable = false)
+    private Professor professor;
 
     @ManyToOne
     @JoinColumn(name = "disciplina_id", nullable = false)
@@ -23,10 +26,11 @@ public class Turma {
 
     public Turma() {}
 
-    public Turma(int codigo, String[] horario, String professor, Disciplina disciplina) {
+    public Turma(int codigo, String[] horario, Professor professor, int[] dias, Disciplina disciplina) {
         this.codigo = codigo;
         this.horario = horario;
         this.professor = professor;
+        this.dias = dias;
         this.disciplina = disciplina;
     }
 

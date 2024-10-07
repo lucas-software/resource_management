@@ -48,20 +48,6 @@ public class DataInitializer implements CommandLineRunner {
         };
         professorRepository.saveAll(Arrays.asList(professores));
 
-        Turma[] turmas = {
-            new Turma(101, new String[] {"A","B"}, "Professor 1", new int[] {1,3}, null),
-            new Turma(102, new String[] {"C","D"}, "Professor 2", new int[] {2,4}, null),
-            new Turma(103, new String[] {"E","E1"}, "Professor 3", new int[] {3}, null),
-            new Turma(104, new String[] {"F","G"}, "Professor 4", new int[] {1,3}, null),
-            new Turma(105, new String[] {"H","I"}, "Professor 5", new int[] {2,4}, null),
-            new Turma(106, new String[] {"J","K"}, "Professor 1", new int[] {1}, null),
-            new Turma(107, new String[] {"L","M"}, "Professor 2", new int[] {2,4}, null),
-            new Turma(108, new String[] {"N","P"}, "Professor 3", new int[] {6}, null),
-            new Turma(109, new String[] {"A","B"}, "Professor 4", new int[] {1,3}, null),
-            new Turma(110, new String[] {"C","D"}, "Professor 5", new int[] {6}, null)
-        };
-        turmaRepository.saveAll(Arrays.asList(turmas));
-
         Reserva[] reservas = {
             new Reserva(LocalDate.now(), new String[] {"A","B"}, 101),
             new Reserva(LocalDate.now(), new String[] {"C","D"}, 102),
@@ -88,6 +74,20 @@ public class DataInitializer implements CommandLineRunner {
             new Disciplina("DISC105", "História", 40)
         };
         disciplinaRepository.saveAll(Arrays.asList(disciplinas));
+
+        Turma[] turmas = {
+            new Turma(101, new String[] {"A","B"}, professores[0], new int[] {1,3}, disciplinas[0]),
+            new Turma(102, new String[] {"C","D"}, professores[1], new int[] {2,4}, disciplinas[1]),
+            new Turma(103, new String[] {"E","E1"}, professores[2], new int[] {3}, disciplinas[2]),
+            new Turma(104, new String[] {"F","G"}, professores[3], new int[] {1,3}, disciplinas[3]),
+            new Turma(105, new String[] {"H","I"}, professores[4], new int[] {2,4}, disciplinas[4]),
+            new Turma(106, new String[] {"J","K"}, professores[0], new int[] {1}, disciplinas[0]),
+            new Turma(107, new String[] {"L","M"}, professores[1], new int[] {2,4}, disciplinas[1]),
+            new Turma(108, new String[] {"N","P"}, professores[2], new int[] {6}, disciplinas[2]),
+            new Turma(109, new String[] {"A","B"}, professores[3], new int[] {1,3}, disciplinas[3]),
+            new Turma(110, new String[] {"C","D"}, professores[4], new int[] {6}, disciplinas[4])
+        };
+        turmaRepository.saveAll(Arrays.asList(turmas));
 
         System.out.println("Banco de dados inicializado com dados de teste.");
     }
