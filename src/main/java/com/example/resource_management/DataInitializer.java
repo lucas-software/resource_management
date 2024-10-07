@@ -49,16 +49,16 @@ public class DataInitializer implements CommandLineRunner {
         professorRepository.saveAll(Arrays.asList(professores));
 
         Turma[] turmas = {
-            new Turma(101, new String[] {"A","B"}, "Professor 1", null),
-            new Turma(102, new String[] {"C","D"}, "Professor 2", null),
-            new Turma(103, new String[] {"E","E1"}, "Professor 3", null),
-            new Turma(104, new String[] {"F","G"}, "Professor 4", null),
-            new Turma(105, new String[] {"H","I"}, "Professor 5", null),
-            new Turma(106, new String[] {"J","K"}, "Professor 1", null),
-            new Turma(107, new String[] {"L","M"}, "Professor 2", null),
-            new Turma(108, new String[] {"N","P"}, "Professor 3", null),
-            new Turma(109, new String[] {"A","B"}, "Professor 4", null),
-            new Turma(110, new String[] {"C","D"}, "Professor 5", null)
+            new Turma(101, new String[] {"A","B"}, "Professor 1", new int[] {1,3}, null),
+            new Turma(102, new String[] {"C","D"}, "Professor 2", new int[] {2,4}, null),
+            new Turma(103, new String[] {"E","E1"}, "Professor 3", new int[] {3}, null),
+            new Turma(104, new String[] {"F","G"}, "Professor 4", new int[] {1,3}, null),
+            new Turma(105, new String[] {"H","I"}, "Professor 5", new int[] {2,4}, null),
+            new Turma(106, new String[] {"J","K"}, "Professor 1", new int[] {1}, null),
+            new Turma(107, new String[] {"L","M"}, "Professor 2", new int[] {2,4}, null),
+            new Turma(108, new String[] {"N","P"}, "Professor 3", new int[] {6}, null),
+            new Turma(109, new String[] {"A","B"}, "Professor 4", new int[] {1,3}, null),
+            new Turma(110, new String[] {"C","D"}, "Professor 5", new int[] {6}, null)
         };
         turmaRepository.saveAll(Arrays.asList(turmas));
 
