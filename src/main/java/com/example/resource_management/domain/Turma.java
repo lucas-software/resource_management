@@ -13,7 +13,7 @@ public class Turma {
     private Long id;
 
     private int codigo;
-    private String horario;
+    private String[] horario;
     
     private String professor;
 
@@ -23,7 +23,7 @@ public class Turma {
 
     public Turma() {}
 
-    public Turma(int codigo, String horario, String professor, Disciplina disciplina) {
+    public Turma(int codigo, String[] horario, String professor, Disciplina disciplina) {
         this.codigo = codigo;
         this.horario = horario;
         this.professor = professor;

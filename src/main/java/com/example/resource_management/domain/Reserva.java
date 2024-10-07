@@ -16,12 +16,12 @@ public class Reserva {
     private Long id;
 
     private LocalDate data;
-    private String horario;
+    private String[] horario;
     private int turma;
 
     public Reserva() {}
 
-    public Reserva(LocalDate data, String horario, int turma) {
+    public Reserva(LocalDate data, String[] horario, int turma) {
         this.data = data;
         this.horario = horario;
         this.turma = turma;

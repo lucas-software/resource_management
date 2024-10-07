@@ -49,25 +49,25 @@ public class DataInitializer implements CommandLineRunner {
         professorRepository.saveAll(Arrays.asList(professores));
 
         Turma[] turmas = {
-            new Turma(101, "08:00 - 10:00", "Professor 1"),
-            new Turma(102, "10:00 - 12:00", "Professor 2"),
-            new Turma(103, "14:00 - 16:00", "Professor 3"),
-            new Turma(104, "16:00 - 18:00", "Professor 4"),
-            new Turma(105, "08:00 - 10:00", "Professor 5"),
-            new Turma(106, "10:00 - 12:00", "Professor 1"),
-            new Turma(107, "14:00 - 16:00", "Professor 2"),
-            new Turma(108, "16:00 - 18:00", "Professor 3"),
-            new Turma(109, "08:00 - 10:00", "Professor 4"),
-            new Turma(110, "10:00 - 12:00", "Professor 5")
+            new Turma(101, new String[] {"A","B"}, "Professor 1", null),
+            new Turma(102, new String[] {"C","D"}, "Professor 2", null),
+            new Turma(103, new String[] {"E","E1"}, "Professor 3", null),
+            new Turma(104, new String[] {"F","G"}, "Professor 4", null),
+            new Turma(105, new String[] {"H","I"}, "Professor 5", null),
+            new Turma(106, new String[] {"J","K"}, "Professor 1", null),
+            new Turma(107, new String[] {"L","M"}, "Professor 2", null),
+            new Turma(108, new String[] {"N","P"}, "Professor 3", null),
+            new Turma(109, new String[] {"A","B"}, "Professor 4", null),
+            new Turma(110, new String[] {"C","D"}, "Professor 5", null)
         };
         turmaRepository.saveAll(Arrays.asList(turmas));
 
         Reserva[] reservas = {
-            new Reserva(LocalDate.now(), "08:00 - 10:00", 101),
-            new Reserva(LocalDate.now(), "10:00 - 12:00", 102),
-            new Reserva(LocalDate.now().plusDays(1), "14:00 - 16:00", 103),
-            new Reserva(LocalDate.now().plusDays(2), "16:00 - 18:00", 104),
-            new Reserva(LocalDate.now().plusDays(3), "08:00 - 10:00", 105)
+            new Reserva(LocalDate.now(), new String[] {"A","B"}, 101),
+            new Reserva(LocalDate.now(), new String[] {"C","D"}, 102),
+            new Reserva(LocalDate.now().plusDays(1), new String[] {"E","E1"}, 103),
+            new Reserva(LocalDate.now().plusDays(2), new String[] {"F","G"}, 104),
+            new Reserva(LocalDate.now().plusDays(3), new String[] {"H","I"}, 105)
         };
         reservaRepository.saveAll(Arrays.asList(reservas));
 
