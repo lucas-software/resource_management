@@ -19,6 +19,4 @@ public class JpaProfessorRepository implements ProfessorRepository {
         Professor professor = entityManager.find(Professor.class, id);
         return Optional.ofNullable(professor);
     }
-
-    // Other methods from JpaRepository need to be implemented or you can extend SimpleJpaRepository
 }
