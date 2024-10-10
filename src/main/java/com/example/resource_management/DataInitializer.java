@@ -3,12 +3,12 @@ package com.example.resource_management;
 import com.example.resource_management.domain.Disciplina;
 import com.example.resource_management.domain.Professor;
 import com.example.resource_management.domain.Recurso;
-import com.example.resource_management.domain.Reserva;
+import com.example.resource_management.domain.Alocacao;
 import com.example.resource_management.domain.Turma;
 import com.example.resource_management.repository.DisciplinaRepository;
 import com.example.resource_management.repository.ProfessorRepository;
 import com.example.resource_management.repository.RecursoRepository;
-import com.example.resource_management.repository.ReservaRepository;
+import com.example.resource_management.repository.AlocacaoRepository;
 import com.example.resource_management.repository.TurmaRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -21,18 +21,18 @@ public class DataInitializer implements CommandLineRunner {
 
     private final ProfessorRepository professorRepository;
     private final TurmaRepository turmaRepository;
-    private final ReservaRepository reservaRepository;
+    private final AlocacaoRepository alocacaoRepository;
     private final RecursoRepository recursoRepository;
     private final DisciplinaRepository disciplinaRepository;
 
     public DataInitializer(ProfessorRepository professorRepository, 
                            TurmaRepository turmaRepository,
-                           ReservaRepository reservaRepository,
+                           AlocacaoRepository alocacaoRepository,
                            RecursoRepository recursoRepository,
                            DisciplinaRepository disciplinaRepository) {
         this.professorRepository = professorRepository;
         this.turmaRepository = turmaRepository;
-        this.reservaRepository = reservaRepository;
+        this.alocacaoRepository = alocacaoRepository;
         this.recursoRepository = recursoRepository;
         this.disciplinaRepository = disciplinaRepository;
     }
@@ -48,14 +48,14 @@ public class DataInitializer implements CommandLineRunner {
         };
         professorRepository.saveAll(Arrays.asList(professores));
 
-        Reserva[] reservas = {
-            new Reserva(LocalDate.now(), new String[] {"A","B"}, 101),
-            new Reserva(LocalDate.now(), new String[] {"C","D"}, 102),
-            new Reserva(LocalDate.now().plusDays(1), new String[] {"E","E1"}, 103),
-            new Reserva(LocalDate.now().plusDays(2), new String[] {"F","G"}, 104),
-            new Reserva(LocalDate.now().plusDays(3), new String[] {"H","I"}, 105)
+        Alocacao[] alocacao = {
+            new Alocacao(LocalDate.now(), new String[] {"A","B"}, 101),
+            new Alocacao(LocalDate.now(), new String[] {"C","D"}, 102),
+            new Alocacao(LocalDate.now().plusDays(1), new String[] {"E","E1"}, 103),
+            new Alocacao(LocalDate.now().plusDays(2), new String[] {"F","G"}, 104),
+            new Alocacao(LocalDate.now().plusDays(3), new String[] {"H","I"}, 105)
         };
-        reservaRepository.saveAll(Arrays.asList(reservas));
+        alocacaoRepository.saveAll(Arrays.asList(alocacao));
 
         Recurso[] recursos = {
             new Recurso(001, "Laboratório"),
