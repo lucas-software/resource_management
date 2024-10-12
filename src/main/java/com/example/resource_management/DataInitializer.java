@@ -48,15 +48,6 @@ public class DataInitializer implements CommandLineRunner {
         };
         professorRepository.saveAll(Arrays.asList(professores));
 
-        Alocacao[] alocacao = {
-            new Alocacao(LocalDate.now(), new String[] {"A","B"}, 101),
-            new Alocacao(LocalDate.now(), new String[] {"C","D"}, 102),
-            new Alocacao(LocalDate.now().plusDays(1), new String[] {"E","E1"}, 103),
-            new Alocacao(LocalDate.now().plusDays(2), new String[] {"F","G"}, 104),
-            new Alocacao(LocalDate.now().plusDays(3), new String[] {"H","I"}, 105)
-        };
-        alocacaoRepository.saveAll(Arrays.asList(alocacao));
-
         Recurso[] recursos = {
             new Recurso(001, "Laboratório"),
             new Recurso(010, "Sala com Projetor"),
@@ -88,6 +79,15 @@ public class DataInitializer implements CommandLineRunner {
             new Turma(110, new String[] {"C","D"}, professores[4], new int[] {6}, disciplinas[4])
         };
         turmaRepository.saveAll(Arrays.asList(turmas));
+
+        Alocacao[] alocacao = {
+            new Alocacao(LocalDate.now(), new String[] {"A","B"}, new int[] {1}, turmas[0], recursos[0]), // adicionar um dia específico
+            new Alocacao(LocalDate.now(), new String[] {"C","D"}, new int [] {2}, turmas[1], recursos[1]),
+            new Alocacao(LocalDate.now().plusDays(1), new String[] {"E","E1"}, new int[] {3}, turmas[2], recursos[2]),
+            new Alocacao(LocalDate.now().plusDays(2), new String[] {"F","G"}, new int[] {1,3}, turmas[3], recursos[3]),
+            new Alocacao(LocalDate.now().plusDays(3), new String[] {"H","I"}, new int[] {2,4}, turmas[4], recursos[4]),
+        };
+        alocacaoRepository.saveAll(Arrays.asList(alocacao));
 
         System.out.println("Banco de dados inicializado com dados de teste.");
     }
