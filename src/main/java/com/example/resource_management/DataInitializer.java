@@ -3,12 +3,12 @@ package com.example.resource_management;
 import com.example.resource_management.domain.Disciplina;
 import com.example.resource_management.domain.Professor;
 import com.example.resource_management.domain.Recurso;
-import com.example.resource_management.domain.Reserva;
+import com.example.resource_management.domain.Alocacao;
 import com.example.resource_management.domain.Turma;
 import com.example.resource_management.repository.DisciplinaRepository;
 import com.example.resource_management.repository.ProfessorRepository;
 import com.example.resource_management.repository.RecursoRepository;
-import com.example.resource_management.repository.ReservaRepository;
+import com.example.resource_management.repository.AlocacaoRepository;
 import com.example.resource_management.repository.TurmaRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -21,18 +21,18 @@ public class DataInitializer implements CommandLineRunner {
 
     private final ProfessorRepository professorRepository;
     private final TurmaRepository turmaRepository;
-    private final ReservaRepository reservaRepository;
+    private final AlocacaoRepository alocacaoRepository;
     private final RecursoRepository recursoRepository;
     private final DisciplinaRepository disciplinaRepository;
 
     public DataInitializer(ProfessorRepository professorRepository, 
                            TurmaRepository turmaRepository,
-                           ReservaRepository reservaRepository,
+                           AlocacaoRepository alocacaoRepository,
                            RecursoRepository recursoRepository,
                            DisciplinaRepository disciplinaRepository) {
         this.professorRepository = professorRepository;
         this.turmaRepository = turmaRepository;
-        this.reservaRepository = reservaRepository;
+        this.alocacaoRepository = alocacaoRepository;
         this.recursoRepository = recursoRepository;
         this.disciplinaRepository = disciplinaRepository;
     }
@@ -47,29 +47,6 @@ public class DataInitializer implements CommandLineRunner {
             new Professor("Professor 5", "prof5@example.com")
         };
         professorRepository.saveAll(Arrays.asList(professores));
-
-        Turma[] turmas = {
-            new Turma(101, "08:00 - 10:00", "Professor 1"),
-            new Turma(102, "10:00 - 12:00", "Professor 2"),
-            new Turma(103, "14:00 - 16:00", "Professor 3"),
-            new Turma(104, "16:00 - 18:00", "Professor 4"),
-            new Turma(105, "08:00 - 10:00", "Professor 5"),
-            new Turma(106, "10:00 - 12:00", "Professor 1"),
-            new Turma(107, "14:00 - 16:00", "Professor 2"),
-            new Turma(108, "16:00 - 18:00", "Professor 3"),
-            new Turma(109, "08:00 - 10:00", "Professor 4"),
-            new Turma(110, "10:00 - 12:00", "Professor 5")
-        };
-        turmaRepository.saveAll(Arrays.asList(turmas));
-
-        Reserva[] reservas = {
-            new Reserva(LocalDate.now(), "08:00 - 10:00", 101),
-            new Reserva(LocalDate.now(), "10:00 - 12:00", 102),
-            new Reserva(LocalDate.now().plusDays(1), "14:00 - 16:00", 103),
-            new Reserva(LocalDate.now().plusDays(2), "16:00 - 18:00", 104),
-            new Reserva(LocalDate.now().plusDays(3), "08:00 - 10:00", 105)
-        };
-        reservaRepository.saveAll(Arrays.asList(reservas));
 
         Recurso[] recursos = {
             new Recurso(001, "Laboratório"),
@@ -88,6 +65,29 @@ public class DataInitializer implements CommandLineRunner {
             new Disciplina("DISC105", "História", 40)
         };
         disciplinaRepository.saveAll(Arrays.asList(disciplinas));
+
+        Turma[] turmas = {
+            new Turma(101, new String[] {"A","B"}, professores[0], new int[] {1,3}, disciplinas[0]),
+            new Turma(102, new String[] {"C","D"}, professores[1], new int[] {2,4}, disciplinas[1]),
+            new Turma(103, new String[] {"E","E1"}, professores[2], new int[] {3}, disciplinas[2]),
+            new Turma(104, new String[] {"F","G"}, professores[3], new int[] {1,3}, disciplinas[3]),
+            new Turma(105, new String[] {"H","I"}, professores[4], new int[] {2,4}, disciplinas[4]),
+            new Turma(106, new String[] {"J","K"}, professores[0], new int[] {1}, disciplinas[0]),
+            new Turma(107, new String[] {"L","M"}, professores[1], new int[] {2,4}, disciplinas[1]),
+            new Turma(108, new String[] {"N","P"}, professores[2], new int[] {6}, disciplinas[2]),
+            new Turma(109, new String[] {"A","B"}, professores[3], new int[] {1,3}, disciplinas[3]),
+            new Turma(110, new String[] {"C","D"}, professores[4], new int[] {6}, disciplinas[4])
+        };
+        turmaRepository.saveAll(Arrays.asList(turmas));
+
+        Alocacao[] alocacao = {
+            new Alocacao(LocalDate.now(), new String[] {"A","B"}, new int[] {1}, turmas[0], recursos[0]), // adicionar um dia específico
+            new Alocacao(LocalDate.now(), new String[] {"C","D"}, new int [] {2}, turmas[1], recursos[1]),
+            new Alocacao(LocalDate.now().plusDays(1), new String[] {"E","E1"}, new int[] {3}, turmas[2], recursos[2]),
+            new Alocacao(LocalDate.now().plusDays(2), new String[] {"F","G"}, new int[] {1,3}, turmas[3], recursos[3]),
+            new Alocacao(LocalDate.now().plusDays(3), new String[] {"H","I"}, new int[] {2,4}, turmas[4], recursos[4]),
+        };
+        alocacaoRepository.saveAll(Arrays.asList(alocacao));
 
         System.out.println("Banco de dados inicializado com dados de teste.");
     }
